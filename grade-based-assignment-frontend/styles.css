@@ -1,15 +1,218 @@
-#start-page,
-#details-page,
-#search-page {
-  display: none;
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#start-page.open,
-#details-page.open,
-#search-page.open {
+body {
+  font-family: 'Noto Sans', sans-serif; /* Apply Noto Sans to the entire body text */
+  background: #09080e; /* Deep, dark purple-blue */
+  color: #d4af37; /* Golden-yellow text color */
+  text-align: center;
+  padding: 0;
+}
+
+h1, h2 {
+  font-family: 'Cinzel', serif;
+  color: #f4d03f; /* Enchanted gold */
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Glowing golden effect */
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+button, input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover, input:focus {
+  transform: scale(1.05);
+}
+
+/* Navbar Styles */
+.navbar {
+  background: #2b1a47; /* Dark magical purple */
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.link {
+  font-size: 18px;
+  color: #f4f4f4;
+  background: #3e2a5f; /* Deep mystical blue */
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.link:hover {
+  background: #f4d03f; /* Glowing gold */
+  box-shadow: 0 0 10px #f4d03f;
+}
+
+/* Page Styles */
+#start-page, #details-page, #search-page {
+  display: none;
+  padding: 100px 0;
+}
+
+#start-page.open, #details-page.open, #search-page.open {
   display: block;
 }
 
-img {
+#start-page {
+  background: linear-gradient(145deg, #2a2a3c, #4e3c6e); /* Dark mystical gradient */
+  border-radius: 10px;
+  margin-top: 70px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#search-page {
+  background: #3e2a5f; /* Dark purple */
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#search-results {
+  display: inline-block;
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  list-style: none; /* Remove list bullets (black dots) */
+}
+
+#search-results li {
+  background: #4e3c6e; /* Deep, dark purple */
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#search-results li:hover {
+  background: #f4d03f; /* Glowing gold */
+  color: #1a0e30;
+  box-shadow: 0 0 10px #f4d03f;
+}
+
+#search-results:empty {
+  display: none; /* Hide the search results box if there are no results */
+}
+
+/* Cocktail Display Styles */
+#cocktail, #cocktail-details {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+}
+
+
+
+#cocktail img, #cocktail-details img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Golden-yellow glow */
+}
+
+#cocktail h1, #cocktail-details h2 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-family: 'MedievalSharp', cursive;
+  color: #f4d03f; /* Glowing gold */
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Glowing effect */
+}
+
+button#new-cocktail {
+  background: #f4d03f; /* Golden yellow */
+  color: #1a0e30;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+button#new-cocktail:hover {
+  background: #1a0e30; /* Darker shade */
+  color: #f4d03f; /* Glowing gold */
+  box-shadow: 0 0 15px #f4d03f;
+}
+
+/* Form and Input Styles */
+#search-form {
+  margin-top: 20px;
+}
+
+#search-input {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  background: #3e2a5f; /* Dark mystical blue */
+  color: #f4f4f4;
+  border: 2px solid #555;
+  margin-right: 10px;
   width: 300px;
+}
+
+#search-button {
+  background: #f4d03f; /* Golden yellow */
+  color: #1a0e30;
+  padding: 12px 18px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+#search-button:hover {
+  background: #1a0e30;
+  color: #f4d03f;
+  box-shadow: 0 0 10px #f4d03f;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f4d03f;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f4f4f4;
 }

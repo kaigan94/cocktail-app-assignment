@@ -10,6 +10,7 @@ const pages = {
 
 // Fetch and display a random cocktail
 async function fetchRandomCocktail() {
+  document.getElementById("search-results").innerHTML = '';
   try {
     const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
     const data = await response.json();
@@ -60,6 +61,56 @@ function switchPage(page) {
   pages[page].classList.add("open");
 }
 
+// Funktion för att hämta cocktaildata baserat på användarens sökfråga
+async function searchCocktails(cocktailName) {
+  try {
+    // Gör en fetch-request för att söka efter en cocktail med användarens namn
+    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`);
+    const data = await response.json(); // Konvertera svaret till JSON
+    if (data.drinks) {
+      displaySearchResults(data.drinks); // Visa sökresultaten om några cocktails hittades
+    } else {
+      displayNoResults(); // Visa ett meddelande om inga resultat hittades
+    }
+  } catch (error) {
+    console.error("Fetch Error:", error); // Logga eventuella fel
+  }
+}
+
+// Funktion för att visa sökresultaten som en lista
+function displaySearchResults(cocktails) {
+  const resultsDiv = document.getElementById("search-results");
+  resultsDiv.innerHTML = ""; // Rensa tidigare resultat
+
+  cocktails.forEach(cocktail => {
+    const cocktailItem = document.createElement("li");
+    cocktailItem.innerText = cocktail.strDrink; // Namnet på cocktailen
+    cocktailItem.addEventListener("click", () => {
+      fetchCocktailDetails(cocktail.strDrink); // Hämta detaljer för den valda cocktailen
+      switchPage("details"); // Byt till detaljsidan
+    });
+    resultsDiv.appendChild(cocktailItem); // Lägg till cocktailen i listan
+  });
+}
+
+// Funktion för att visa ett meddelande om inga resultat hittades
+function displayNoResults() {
+  const resultsDiv = document.getElementById("search-results");
+  resultsDiv.innerHTML = "<li>No cocktails found.</li>";
+}
+
+// Event listener för att hantera sökknappen och formuläret
+document.getElementById("search-form").addEventListener("submit", (event) => {
+  event.preventDefault(); // Förhindra att formuläret skickas på traditionellt sätt
+  const searchQuery = document.getElementById("search-input").value.trim(); // Hämta sökfrågan
+  if (searchQuery) {
+    searchCocktails(searchQuery); // Sök efter cocktails med det namnet
+  }
+});
+
+// Byta till söksidan när användaren klickar på "search-link"
+document.getElementById("search-link").addEventListener("click", () => switchPage("search"));
+
 // Event Listeners
 document.getElementById("new-cocktail").addEventListener("click", fetchRandomCocktail);
 document.getElementById("details-link").addEventListener("click", () => {
@@ -69,7 +120,7 @@ document.getElementById("details-link").addEventListener("click", () => {
 document.getElementById("search-link").addEventListener("click", () => switchPage("search"));
 document.getElementById("start-link").addEventListener("click", () => {
   document.getElementById("cocktail-details").innerHTML = "";
-  switchPage("start");
+  location.reload();
 });
 
 // Initial cocktail fetch
