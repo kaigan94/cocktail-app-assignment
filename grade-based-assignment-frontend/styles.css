@@ -1,218 +1,204 @@
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Center everything on the page */
 body {
-  font-family: 'Noto Sans', sans-serif; /* Apply Noto Sans to the entire body text */
-  background: #09080e; /* Deep, dark purple-blue */
-  color: #d4af37; /* Golden-yellow text color */
-  text-align: center;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #2b1342; /* Dark background for a more medieval feel */
+  color: #f1c40f; /* Light text color */
+  font-family: 'Poppins', sans-serif;
+  text-align: center; /* Center text globally */
+  flex-direction: column; /* Arrange everything vertically */
+  min-height: 100vh; /* Ensure the content stretches to at least the viewport height */
+  padding: 20px; /* Add some padding to avoid content being too close to the edges */
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+  overflow-y: auto; /* Allow vertical scrolling if content exceeds the viewport */
 }
 
-h1, h2 {
-  font-family: 'Cinzel', serif;
-  color: #f4d03f; /* Enchanted gold */
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Glowing golden effect */
+/* Page visibility */
+#start-page,
+#details-page,
+#search-page {
+  display: none;
 }
 
-a {
-  color: #fff;
-  text-decoration: none;
+#start-page.open,
+#details-page.open,
+#search-page.open {
+  display: block;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-button, input {
-  border: none;
-  outline: none;
-  font-size: 16px;
+.link,
+#new-cocktail {
   cursor: pointer;
-  transition: all 0.3s ease;
+  background-color: #3b3b3b; /* Dark, muted background */
+  color: #f1c40f; /* Goldish color for text */
+  font-family: 'MedievalSharp', sans-serif; /* Use the medieval font for buttons */
+  font-size: 16px; /* Make the font a bit larger */
+  padding: 10px 20px; /* Add padding for a more substantial button */
+  border: 2px solid #f1c40f; /* Gold border for buttons */
+  border-radius: 8px; /* Slightly rounded corners */
+  text-transform: uppercase; /* Make the button text uppercase */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+  margin: 10px; /* Add some space between buttons */
 }
 
-button:hover, input:focus {
-  transform: scale(1.05);
+.link:hover,
+#new-cocktail:hover {
+  background-color: #f1c40f; /* Gold background on hover */
+  color: #3b3b3b; /* Dark text color on hover */
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
 }
 
-/* Navbar Styles */
+.link:focus,
+#new-cocktail:focus {
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 5px 2px rgba(241, 196, 15, 0.5); /* Add a glowing effect around the button */
+}
+
+/* Center the navbar */
 .navbar {
-  background: #2b1a47; /* Dark magical purple */
-  padding: 15px 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+  display: flex;
+  justify-content: center; /* Centers the nav buttons horizontally */
+  align-items: center; /* Centers the nav buttons vertically */
+  padding: 20px 0; /* Adjust padding for better spacing */
 }
 
 .nav-buttons {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: center; /* Center the navbar buttons */
+  gap: 20px; /* Space out the buttons */
 }
 
-.link {
-  font-size: 18px;
-  color: #f4f4f4;
-  background: #3e2a5f; /* Deep mystical blue */
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: 0.3s;
+.nav-buttons button {
+  margin-top: 10px; /* Adds space above the nav buttons */
 }
 
-.link:hover {
-  background: #f4d03f; /* Glowing gold */
-  box-shadow: 0 0 10px #f4d03f;
+/* Center the page content */
+#cocktail, #cocktail-details, #search-results, #search-form, h1, h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  text-align: center; /* Center text inside elements */
+  margin: 10px;
 }
 
-/* Page Styles */
-#start-page, #details-page, #search-page {
-  display: none;
-  padding: 100px 0;
+h1, h2 {
+  font-family: 'MedievalSharp', sans-serif; /* Use medieval fantasy font */
+  text-transform: uppercase; /* Convert text to uppercase */
+  color: #f1c40f; /* Light text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Light shadow for extra glow */
+  letter-spacing: 2px; /* Add spacing between letters */
 }
 
-#start-page.open, #details-page.open, #search-page.open {
-  display: block;
+img {
+  width: 400px; /* Keep the width as defined */
+  border: 5px solid #8e44ad; /* Purple border for a mystical feel */
+  border-radius: 10px; /* Slightly round the corners for a softer look */
+  padding: 5px; /* Add padding inside the border */
+  background-color: #2c3e50; /* Dark background color behind the image */
+  box-shadow: 0 0 15px rgba(142, 68, 173, 0.6); /* Add a mystical glowing shadow effect */
+  margin-bottom: 20px; /* Add space below the image */
 }
 
-#start-page {
-  background: linear-gradient(145deg, #2a2a3c, #4e3c6e); /* Dark mystical gradient */
-  border-radius: 10px;
-  margin-top: 70px;
-  padding: 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+/* Center the cocktail details */
+#cocktail-details {
+  margin-top: 10px; /* Space above the details section */
+  max-width: 600px; /* Set a maximum width for the container */
+  width: 100%; /* Ensure it takes up full width up to the max width */
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: left; /* Align the text to the left for better readability */
+  padding: 0 20px; /* Add some padding on the sides */
 }
 
-#search-page {
-  background: #3e2a5f; /* Dark purple */
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+#cocktail-details p,
+#cocktail-details ul {
+  list-style-type: none; /* Remove the default dots */
+  padding-left: 0; /* Remove padding */
+  margin: 12px 0; /* Add vertical spacing between paragraphs and lists */
 }
 
+#cocktail-details li {
+  font-size: 18px; /* Slightly smaller font for better spacing */
+  margin: 10px 0; /* Add spacing between list items */
+  color: #f1c40f; /* Light text color */
+  text-align: left; /* Align text to the left */
+  position: relative;
+}
+
+/* Fancy unicode characters for list items */
+#cocktail-details li::before {
+  content: "\2605"; /* Unicode character for a star */
+  font-size: 22px; /* Size of the star */
+  color: #8e44ad; /* Purple star for a mystical feel */
+  position: absolute;
+  left: -25px; /* Position the star to the left of the text */
+  top: 50%; /* Center the star vertically */
+  transform: translateY(-50%); /* Adjust vertical centering */
+}
+
+/* Additional styling for the search results */
 #search-results {
-  display: inline-block;
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  list-style: none; /* Remove list bullets (black dots) */
+  list-style-type: none;
+  padding: none;
 }
 
 #search-results li {
-  background: #4e3c6e; /* Deep, dark purple */
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  font-size: 20px;
+  margin: 5px 0;
   cursor: pointer;
-  font-size: 18px;
+  transition: color 0.2s ease;
 }
 
 #search-results li:hover {
-  background: #f4d03f; /* Glowing gold */
-  color: #1a0e30;
-  box-shadow: 0 0 10px #f4d03f;
+  color: #fff2be;
+  /* Highlight search items on hover */
 }
 
-#search-results:empty {
-  display: none; /* Hide the search results box if there are no results */
-}
-
-/* Cocktail Display Styles */
-#cocktail, #cocktail-details {
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
-}
-
-
-
-#cocktail img, #cocktail-details img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  margin: 20px auto;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Golden-yellow glow */
-}
-
-#cocktail h1, #cocktail-details h2 {
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  font-family: 'MedievalSharp', cursive;
-  color: #f4d03f; /* Glowing gold */
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Glowing effect */
-}
-
-button#new-cocktail {
-  background: #f4d03f; /* Golden yellow */
-  color: #1a0e30;
-  padding: 15px 25px;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-button#new-cocktail:hover {
-  background: #1a0e30; /* Darker shade */
-  color: #f4d03f; /* Glowing gold */
-  box-shadow: 0 0 15px #f4d03f;
-}
-
-/* Form and Input Styles */
+/* Style for the search form */
 #search-form {
-  margin-top: 20px;
+  text-align: center; /* Center the form */
+  margin-top: 20px; /* Add some space at the top */
 }
 
+/* Style for the search input */
 #search-input {
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 5px;
-  background: #3e2a5f; /* Dark mystical blue */
-  color: #f4f4f4;
-  border: 2px solid #555;
-  margin-right: 10px;
-  width: 300px;
+  padding: 10px; /* Add padding for a better look */
+  font-size: 16px; /* Set a larger font size */
+  border: 3px solid #8e44ad; /* Use the same mystical purple border */
+  border-radius: 5px; /* Slightly rounded corners */
+  background-color: #34495e; /* Dark background for input */
+  color: #ecf0f1; /* Light text color */
+  width: 300px; /* Set the width of the input */
+  transition: all 0.3s ease; /* Smooth transition on hover */
+  margin-bottom: 20px; /* Add space below the input */
 }
 
+/* Add a glowing effect on input focus */
+#search-input:focus {
+  border-color: #f39c12; /* Gold border on focus */
+  box-shadow: 0 0 10px rgba(241, 156, 18, 0.8); /* Glowing gold shadow */
+  outline: none; /* Remove the default focus outline */
+}
+
+/* Style for the search button */
 #search-button {
-  background: #f4d03f; /* Golden yellow */
-  color: #1a0e30;
-  padding: 12px 18px;
-  border-radius: 5px;
-  font-size: 18px;
+  background-color: #6f2a8d; /* Purple background */
+  color: #ecf0f1; /* Light text color */
+  padding: 12px 24px; /* Add padding */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Round corners */
+  font-size: 18px; /* Increase font size */
+  cursor: pointer; /* Change the cursor on hover */
+  margin-top: 10px; /* Space between input and button */
+  transition: all 0.3s ease; /* Smooth transition on hover */
 }
 
+/* Style for the search button hover effect */
 #search-button:hover {
-  background: #1a0e30;
-  color: #f4d03f;
-  box-shadow: 0 0 10px #f4d03f;
-}
-
-/* Scrollbar Customization */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #f4d03f;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f4f4f4;
+  background-color: #f39c12; /* Gold color on hover */
+  box-shadow: 0 0 15px rgba(241, 156, 18, 0.8); /* Gold glow effect */
+  transform: scale(1.05); /* Slight zoom effect */
 }
