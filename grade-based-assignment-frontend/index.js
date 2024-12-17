@@ -68,33 +68,52 @@ function switchPage(page) {
   }
 }
 
-// Fetch and display cocktails based on the search
-async function searchCocktails(cocktailName) {
-  try { 
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`);
-    const data = await response.json();
-    if (data.drinks) {
-      displaySearchResults(data.drinks); 
+// Search fetch
+async function searchCocktails(query) {
+  try {
+    const nameFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
+    const ingredientFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${query}`);
+    
+    const nameData = await nameFetch.json();
+    const ingredientData = await ingredientFetch.json();
+
+    const bothResults = [
+      ...(nameData.drinks || []),
+      ...(ingredientData.drinks || [])
+    ];
+
+    if (bothResults.length) {
+      displaySearchResults(bothResults);
     } else {
-      displayNoResults(); 
+      displayNoResults();
     }
   } catch (error) {
-    console.error("Fetch Error:", error); 
+    console.error("Fetch Error:", error);
   }
 }
 
 // Search results function
 function displaySearchResults(cocktails) {
   const resultsDiv = document.getElementById("search-results");
-  resultsDiv.innerHTML = ""; 
+  resultsDiv.innerHTML = "";  
+  
   cocktails.forEach(cocktail => {
-    const cocktailItem = document.createElement("li");
-    cocktailItem.innerText = cocktail.strDrink; 
-    cocktailItem.addEventListener("click", () => {
-      fetchCocktailDetails(cocktail.strDrink);
-      switchPage("details"); 
-    });
-    resultsDiv.appendChild(cocktailItem);
+    if (cocktail && cocktail.strDrink) { // Ensure the data is valid
+      const cocktailItem = document.createElement("li");
+      cocktailItem.innerText = cocktail.strDrink; 
+      
+      cocktailItem.addEventListener("click", () => {
+        fetchCocktailDetails(cocktail.strDrink);
+        switchPage("details");
+      
+        window.scrollTo({
+          top: 0,
+          behavior: "auto"
+        });
+      });
+      
+      resultsDiv.appendChild(cocktailItem);
+    }
   });
 }
 
