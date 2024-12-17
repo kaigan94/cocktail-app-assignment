@@ -1,21 +1,3 @@
-/* General Page Styles */
-body {
-  display: flex;
-  justify-content: flex-start; /* Aligns the content to the top */
-  align-items: flex; /* Aligns content to the left */
-  margin: 0;
-  background-color: #2b1342; /* Dark background for a more medieval feel */
-  color: #f1c40f; /* Light text color */
-  font-family: 'Poppins', sans-serif;
-  text-align: center; /* Center text globally */
-  flex-direction: column; /* Arrange everything vertically */
-  min-height: 100vh; /* Ensure the content stretches to at least the viewport height */
-  padding: 20px; /* Add some padding to avoid content being too close to the edges */
-  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
-  overflow-y: auto; /* Allow vertical scrolling if content exceeds the viewport */
-}
-
-/* Page visibility */
 #start-page,
 #details-page,
 #search-page {
@@ -28,188 +10,41 @@ body {
   display: block;
 }
 
-/* Link and Button Styles */
-.link,
-#new-cocktail {
-  cursor: pointer;
-  background-color: #3b3b3b; /* Dark, muted background */
-  color: #f1c40f; /* Goldish color for text */
-  font-family: 'MedievalSharp', sans-serif;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: 2px solid #f1c40f;
-  border-radius: 8px;
+#cocktail-details h2 {
   text-transform: uppercase;
-  transition: all 0.3s ease-in-out;
-  margin: 10px;
+  color: #b22222;
+  text-shadow: #777;
 }
 
-.link:hover,
-#new-cocktail:hover {
-  background-color: #f1c40f;
-  color: #3b3b3b;
-  transform: scale(1.1);
-}
-
-.link:focus,
-#new-cocktail:focus {
-  outline: none;
-  box-shadow: 0 0 5px 2px rgba(241, 196, 15, 0.5);
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.nav-buttons button {
-  margin-top: 10px;
-}
-
-/* Page Content Centering */
-#cocktail, #cocktail-details, #search-results, #search-form, h1, h2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  margin: 10px;
-}
-
-/* Specific text left-alignment for details and search result text */
-#cocktail-details p, #cocktail-details ul, #search-results li {
-  text-align: left; /* Align the text to the left for these elements */
-}
-
-
-h1, h2 {
-  font-family: 'MedievalSharp', sans-serif;
-  text-transform: uppercase;
-  color: #f1c40f;
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.637);
-  letter-spacing: 3px;
-}
-
-/* Image Styling */
 img {
   width: 400px;
-  border: 5px solid #8e44ad;
-  border-radius: 10px;
-  padding: 5px;
-  background-color: #2c3e50;
-  box-shadow: 0 0 15px rgba(142, 68, 173, 0.6);
-  margin-bottom: 20px;
 }
 
-/* Cocktail Details Left Alignment */
-#cocktail-details {
-  margin-top: 10px;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  text-align: left; /* Align text to the left */
-  padding: 0 20px;
-}
-
-#cocktail-details p,
-#cocktail-details ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 12px 0;
-}
-
-#cocktail-details li {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #f1c40f;
-  text-align: left;
-  position: relative;
-}
-
-/* Fancy unicode characters for list items */
-#cocktail-details li::before {
-  content: "\2605"; /* Unicode character for a star */
-  font-size: 22px;
-  color: #8e44ad;
-  position: absolute;
-  left: -25px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-
-/* Search Results Left Alignment */
-#search-results {
-  list-style-type: none;
-  padding: 0; /* Correct padding value */
-  text-align: left; /* Align text to the left */
-  width: 100%; /* Or adjust to your desired width */
-  margin: 0; /* Remove center alignment */
-}
-
-#search-results li {
-  font-size: 20px;
-  margin: 5px 0;
-  cursor: pointer;
-  transition: color 0.2s ease;
-  text-align: left;
-}
-
-#search-results li:hover {
-  color: #fff2be;
-}
-
-/* Search Form Centering */
-#search-form {
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Search Input Styling */
-#search-input {
-  padding: 10px;
-  font-size: 16px;
-  border: 3px solid #8e44ad;
-  border-radius: 5px;
-  background-color: #34495e;
-  color: #ecf0f1;
+.header-logo {
+  display: block;
   width: 300px;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-/* Search Input Focus */
-#search-input:focus {
-  border-color: #f39c12;
-  box-shadow: 0 0 10px rgba(241, 156, 18, 0.8);
-  outline: none;
+h1 {
+  font-size: 28px;
+  text-transform: uppercase;
 }
 
-/* Search Button Styling */
-#search-button {
-  background-color: #6f2a8d;
-  color: #ecf0f1;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease;
+h2 {
+  font-size: 28px;
+  text-transform: uppercase;
 }
 
-/* Search Button Hover */
-#search-button:hover {
-  background-color: #f39c12;
-  box-shadow: 0 0 15px rgba(241, 156, 18, 0.8);
-  transform: scale(1.05);
+.nav-btn {
+ margin-top: 5px;
+}
+
+.btn {
+  margin-top: 2px;
+}
+
+#search-form {
+ margin-top: 5px;
 }

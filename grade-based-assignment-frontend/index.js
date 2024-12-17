@@ -71,19 +71,11 @@ function switchPage(page) {
 // Search fetch
 async function searchCocktails(query) {
   try {
-    const nameFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
-    const ingredientFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${query}`);
-    
+    const nameFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);   
     const nameData = await nameFetch.json();
-    const ingredientData = await ingredientFetch.json();
-
-    const bothResults = [
-      ...(nameData.drinks || []),
-      ...(ingredientData.drinks || [])
-    ];
-
-    if (bothResults.length) {
-      displaySearchResults(bothResults);
+    const cocktails = nameData.drinks || [];
+    if (cocktails.length) {
+      displaySearchResults(cocktails);
     } else {
       displayNoResults();
     }
@@ -95,23 +87,20 @@ async function searchCocktails(query) {
 // Search results function
 function displaySearchResults(cocktails) {
   const resultsDiv = document.getElementById("search-results");
-  resultsDiv.innerHTML = "";  
-  
+  resultsDiv.innerHTML = "";    
   cocktails.forEach(cocktail => {
-    if (cocktail && cocktail.strDrink) { // Ensure the data is valid
+    if (cocktail && cocktail.strDrink) {
       const cocktailItem = document.createElement("li");
-      cocktailItem.innerText = cocktail.strDrink; 
-      
+      cocktailItem.innerText = cocktail.strDrink;       
       cocktailItem.addEventListener("click", () => {
         fetchCocktailDetails(cocktail.strDrink);
-        switchPage("details");
-      
+        switchPage("details");      
         window.scrollTo({
           top: 0,
           behavior: "auto"
         });
-      });
-      
+        resultsDiv.innerHTML = ""; // Remove list after drink is clicked
+      });     
       resultsDiv.appendChild(cocktailItem);
     }
   });
