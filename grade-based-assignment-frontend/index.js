@@ -1,4 +1,3 @@
-// Import function for data mapping
 import { mapRawCocktailData } from './utilities.js';
 
 // DOM Elements
@@ -8,7 +7,7 @@ const pages = {
   search: document.querySelector("#search-page")
 };
 
-// Fetch and display a random cocktail
+// Fetch & display a random cocktail
 async function fetchRandomCocktail() {
   document.getElementById("search-results").innerHTML = '';
   try {
@@ -20,7 +19,7 @@ async function fetchRandomCocktail() {
   }
 }
 
-// Display cocktail info on Home page
+// Display cocktail info on homepage
 function displayCocktail(cocktail) {
   const cocktailDiv = document.getElementById("cocktail");
   const searchForm = document.getElementById("search-form"); 
@@ -31,7 +30,7 @@ function displayCocktail(cocktail) {
   `;
 }
 
-// Fetch and display cocktail details
+// Fetch & display cocktail details
 async function fetchCocktailDetails(name) {
   try {
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
@@ -43,7 +42,7 @@ async function fetchCocktailDetails(name) {
   }
 }
 
-// Display detailed cocktail info
+// Display cocktail details
 function displayCocktailDetails(cocktail) {
   const detailsDiv = document.getElementById("cocktail-details");
   detailsDiv.innerHTML = `
@@ -57,7 +56,7 @@ function displayCocktailDetails(cocktail) {
   `;
 }
 
-// Page switching function
+// Show form on the search page only
 function switchPage(page) {
   Object.values(pages).forEach(p => p.classList.remove("open"));
   pages[page].classList.add("open");
@@ -99,7 +98,7 @@ function displaySearchResults(cocktails) {
           top: 0,
           behavior: "auto"
         });
-        resultsDiv.innerHTML = ""; // Remove list after drink is clicked
+        resultsDiv.innerHTML = "";
       });     
       resultsDiv.appendChild(cocktailItem);
     }
@@ -111,8 +110,8 @@ function displayNoResults() {
   resultsDiv.innerHTML = "<li>No cocktails found.</li>";
 }
 document.getElementById("search-form").addEventListener("submit", (event) => {
-  event.preventDefault(); // Förhindra att formuläret skickas på traditionellt sätt
-  const searchQuery = document.getElementById("search-input").value.trim(); // Hämta sökfrågan
+  event.preventDefault(); 
+  const searchQuery = document.getElementById("search-input").value.trim();
   if (searchQuery) {
     searchCocktails(searchQuery);
   }
