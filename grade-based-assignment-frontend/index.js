@@ -63,7 +63,7 @@ function switchPage(page) {
   if (page === "search") {
     document.getElementById("search-form").style.display = "block";  // Show the form on the search page
   } else {
-    document.getElementById("search-form").style.display = "none";  // Hide on other pages
+    document.getElementById("search-form").style.display = "none";  // Hide on the other pages
   }
 }
 
