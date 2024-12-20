@@ -7,7 +7,7 @@ const pages = {
   search: document.querySelector("#search-page")
 };
 
-// Fetch & display a random cocktail
+// Fetch a random cocktail
 async function fetchRandomCocktail() {
   document.getElementById("search-results").innerHTML = '';
   try {
@@ -30,7 +30,7 @@ function displayCocktail(cocktail) {
   `;
 }
 
-// Fetch & display cocktail details
+// Fetch cocktail details
 async function fetchCocktailDetails(name) {
   try {
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
@@ -56,7 +56,7 @@ function displayCocktailDetails(cocktail) {
   `;
 }
 
-// Show form on the search page only
+// Show search-form only on search page
 function switchPage(page) {
   Object.values(pages).forEach(p => p.classList.remove("open"));
   pages[page].classList.add("open");
@@ -68,9 +68,9 @@ function switchPage(page) {
 }
 
 // Search fetch
-async function searchCocktails(query) {
+async function searchCocktails(cocktailName) {
   try {
-    const nameFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);   
+    const nameFetch = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`);   
     const nameData = await nameFetch.json();
     const cocktails = nameData.drinks || [];
     if (cocktails.length) {
@@ -117,7 +117,7 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
   }
 });
 
-// Event Listeners
+// All event Listeners
 document.getElementById("new-cocktail").addEventListener("click", fetchRandomCocktail);
 document.getElementById("details-link").addEventListener("click", () => {
   const cocktailName = document.querySelector("#cocktail h1").innerText;
@@ -129,5 +129,4 @@ document.getElementById("start-link").addEventListener("click", () => {
   location.reload();
 });
 
-// Initial cocktail fetch
 fetchRandomCocktail();

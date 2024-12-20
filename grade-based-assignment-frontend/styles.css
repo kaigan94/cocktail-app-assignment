@@ -16,8 +16,13 @@
   text-shadow: #777;
 }
 
+ul strong {
+  font-family: Arial, Helvetica, sans-serif
+}
+
 img {
   width: 400px;
+  border-radius: 4px;
 }
 
 .header-logo {
@@ -28,23 +33,49 @@ img {
 }
 
 h1 {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 28px;
   text-transform: uppercase;
+  text-shadow: 0 0 3px #FF0000;
 }
 
 h2 {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 28px;
   text-transform: uppercase;
+  text-shadow: 0 0 2px #990000;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+li {
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+list-style-type: square;
 }
 
 .nav-btn {
  margin-top: 5px;
+ cursor: pointer;
 }
 
 .btn {
   margin-top: 2px;
+  cursor: pointer;
 }
 
 #search-form {
- margin-top: 5px;
+  margin-top: 5px;
+}
+
+#search-button {
+  cursor: pointer;
+}
+
+#search-results{
+  cursor: pointer;
 }
